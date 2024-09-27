@@ -1,0 +1,17 @@
+services:
+  sqlserver:
+    build:
+      context: . # Ruta al directorio donde está el Dockerfile
+      dockerfile: Dockerfile
+    container_name: sqlserver
+    environment:
+      MSSQL_PID: "Express"
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ""
+    volumes:
+      - C:\Users\Administrador\DockerVolumes\SqlServer\data:/var/opt/mssql/data
+      - C:\Users\Administrador\DockerVolumes\SqlServer\log:/var/opt/mssql/log
+      - C:\Users\Administrador\DockerVolumes\SqlServer\secrets:/var/opt/mssql/secrets
+    ports:
+      - "1433:1433"
+    restart: unless-stopped
